@@ -11,37 +11,28 @@ class Modelo extends Connection
 
     // Ejercicio 2
     public function getAllProductos()
-    {
-        $query = "SELECT * FROM PRODUCTO";
-        $result = $this->conn->query($query);
-
-        $productos = array();
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $productos[] = $row;
-            }
+{
+    $query = "SELECT PROD_NUM, DESCRIPCION FROM PRODUCTO";
+    $result = $this->conn->query($query);
+    $productos = [];
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $productos[] = $row;
         }
-
-        return $productos;
     }
+    return $productos;
+}
 
-    // Método para mostrar todos los productos en una tabla
+
     public function showAllProductos()
     {
-        $productos = $this->getAllProductos();
-
-        echo "<table border='1'>";
-        echo "<tr><th>ID</th><th>Nombre</th><th>Precio</th></tr>";
-        
-        foreach ($productos as $producto) {
-            echo "<tr>";
-            echo "<td>{$producto['id']}</td>";
-            echo "<td>{$producto['nombre']}</td>";
-            echo "<td>{$producto['precio']}</td>";
-            echo "</tr>";
-        }
-        
-        echo "</table>";
+    $productos = $this->getAllProductos();
+    echo "<table border='1'>";
+    echo "<tr><th>ID</th><th>Descripción</th></tr>";
+    foreach ($productos as $producto) {
+        echo "<tr><td>{$producto['PROD_NUM']}</td><td>{$producto['DESCRIPCION']}</td></tr>";
+    }
+    echo "</table>";
     }
     // Ejercicio 3
     public function getAllEmp()

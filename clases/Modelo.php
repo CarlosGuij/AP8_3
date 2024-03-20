@@ -9,7 +9,6 @@ class Modelo extends Connection
         parent::__construct();
     }
 
-    // Ejercicio 2
     public function getAllProductos()
 {
     $query = "SELECT PROD_NUM, DESCRIPCION FROM PRODUCTO";
@@ -34,7 +33,7 @@ class Modelo extends Connection
     }
     echo "</table>";
     }
-    // Ejercicio 3
+
     public function getAllEmp()
 {
     $query = "SELECT EMP_NO, APELLIDOS, DEPT_NO, FORMAT(SALARIO, 2, 'es_ES') AS SALARIO FROM EMP";
@@ -48,9 +47,6 @@ class Modelo extends Connection
     return $empleados;
 }
 
-
-
-    // Método para mostrar todos los empleados en una tabla
     public function showAllEmp()
     {
         $empleados = $this->getAllEmp();
@@ -65,7 +61,6 @@ class Modelo extends Connection
     }
 
 
-    // Ejercicio 4
     public function getAllCliente($order)
     {
         $query = "SELECT CLIENTE_COD, NOMBRE, CIUDAD FROM CLIENTE ORDER BY NOMBRE $order";
@@ -90,9 +85,6 @@ class Modelo extends Connection
         echo "</table>";
     }
 
-    // Métodos adicionales
-
-    // Ejercicio 5
     public function getPedidoOver($total)
     {
         $query = "SELECT PEDIDO_NUM, CLIENTE_COD, TOTAL FROM PEDIDO WHERE TOTAL >= $total";
@@ -117,7 +109,6 @@ class Modelo extends Connection
         echo "</table>";
     }
 
-    // Ejercicio 6
     public function getLineasPedido($pedido)
     {
         $query = "SELECT PEDIDO_NUM, DETALLE_NUM, IMPORTE FROM DETALLE WHERE PEDIDO_NUM = $pedido";
@@ -156,7 +147,6 @@ class Modelo extends Connection
         echo "</table>";
     }
 
-    // Ejercicio 7
     public function showPaginator()
     {
         $query = "SELECT COUNT(*) AS total FROM PRODUCTO";
@@ -176,7 +166,6 @@ class Modelo extends Connection
         echo "</div>";
     }
 
-    // Ejercicio 8
     public function showOrderAction()
     {
         $currentOrder = isset($_GET['order']) ? $_GET['order'] : 'ASC';
